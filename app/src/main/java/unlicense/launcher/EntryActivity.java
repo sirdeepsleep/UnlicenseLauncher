@@ -2,6 +2,9 @@ package unlicense.launcher;
 
 import android.app.Activity;
 import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
+import android.view.Gravity;
 import android.app.KeyguardManager;
 import android.app.AlertDialog;
 import android.app.role.RoleManager;
@@ -43,7 +46,18 @@ public class EntryActivity extends Activity {
                             startActivity(new Intent(Settings.ACTION_HOME_SETTINGS));                            
                         })
                         .setCancelable(false)
-                        .show();                
+                        .create();
+
+                Window window = dialog.getWindow();
+                if (window != null) {
+                    window.setGravity(Gravity.CENTER);
+                    WindowManager.LayoutParams params = window.getAttributes();
+                    params.x = 0;
+                    params.y = 0;
+                    window.setAttributes(params);
+                }
+
+                dialog.show();              
             }
         }
     }
