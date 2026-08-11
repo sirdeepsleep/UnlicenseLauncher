@@ -432,7 +432,18 @@ public class LauncherActivity extends Activity {
                         dialog.dismiss();
                     })
                     .setCancelable(false)
-                    .show();
+                    .create();
+
+            Window window = introDialog.getWindow();
+            if (window != null) {
+                window.setGravity(Gravity.CENTER);
+                WindowManager.LayoutParams params = window.getAttributes();
+                params.x = 0;
+                params.y = 0;
+                window.setAttributes(params);
+            }
+
+            introDialog.show();
         }
     }
 
