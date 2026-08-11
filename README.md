@@ -1,1 +1,1 @@
-#
+# UnlicenseLauncher (Unlicense Launcher)
