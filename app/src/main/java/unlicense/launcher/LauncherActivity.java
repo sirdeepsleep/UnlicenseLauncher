@@ -5,6 +5,8 @@ import android.app.AlertDialog;
 import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
+import android.view.Window;
+import android.view.WindowManager;
 import android.content.SharedPreferences;
 import android.content.pm.ApplicationInfo;
 import android.content.pm.LauncherActivityInfo;
@@ -424,7 +426,7 @@ public class LauncherActivity extends Activity {
     private void checkAndShowIntroDialog() {
         boolean isIntroRead = prefs.getBoolean("intro_read", false);
         if (!isIntroRead) {
-            new AlertDialog.Builder(this)
+            AlertDialog introDialog = new AlertDialog.Builder(this)                   
                     .setTitle("Launcher Instructions")
                     .setMessage("• Long press on free space to open launcher settings\n\n• Long press on apps to open \"App info / Uninstall / Exclude app\" menu\n\n• Excluding means hide app from launcher and search panel\n\n• You can set Search PIN in launcher settings to search hidden apps using it in search panel\n\n• Also, you can disable screenshots and set wallpaper in launcher settings\n\n• Apps from work profile (if you have it) you can find in excluded apps screen")
                     .setPositiveButton("Confirm", (dialog, which) -> {
