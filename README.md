@@ -1,1 +1,3 @@
 # UnlicenseLauncher (Unlicense Launcher)
+
+Simple and secure FOSS launcher with fully FREE🐍 license
