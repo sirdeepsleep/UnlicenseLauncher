@@ -1,0 +1,6 @@
+Features:
+- Excluding applications from the home screen and search bar
+- Setting wallpaper
+- Searching for applications in the search bar
+- Searching for excluded applications by PIN code in the same search bar
+- Managing the list of excluded applications is carried out by excluding them on the home screen or by updating this list in the exclusion management panel accessible after entering the PIN code
