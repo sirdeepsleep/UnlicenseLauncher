@@ -1,0 +1,32 @@
+plugins {
+id 'com.android.application'
+
+}
+
+android {
+namespace "unlicense.launcher"
+compileSdk 34
+
+lint {
+        checkReleaseBuilds false
+    }
+
+defaultConfig {  
+    applicationId "unlicense.launcher"  
+    minSdk 29
+    targetSdk 37
+    versionCode 1
+    versionName "1.0"  
+}  
+
+buildTypes {  
+    release {  
+        minifyEnabled false  
+        shrinkResources false  
+         }  
+}
+
+}
+
+dependencies {
+}
