@@ -1,0 +1,52 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+
+	<uses-permission android:name="android.permission.QUERY_ALL_PACKAGES" />
+	<uses-permission android:name="android.permission.SET_WALLPAPER" />
+	<uses-permission android:name="android.permission.REQUEST_DELETE_PACKAGES" />   
+
+    <application
+        android:label="UnlicenseLauncher"
+		android:theme="@style/AppTheme"					
+		android:icon="@drawable/ic_launcher"
+		android:roundIcon="@mipmap/ic_launcher">
+	
+		<activity
+            android:name=".EntryActivity"			
+			android:excludeFromRecents="true"            
+            android:exported="true"
+            android:launchMode="singleTask"
+            android:stateNotNeeded="true"
+            android:clearTaskOnLaunch="true"
+            android:taskAffinity="">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+		
+		<activity
+            android:name=".LauncherActivity"				
+			android:excludeFromRecents="true"            
+            android:exported="true"
+            android:launchMode="singleInstance"
+            android:stateNotNeeded="true"
+            android:clearTaskOnLaunch="true"
+            android:taskAffinity="">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.HOME" />
+                <category android:name="android.intent.category.DEFAULT" />                
+            </intent-filter>
+        </activity>
+		
+		<activity			
+			android:name=".SettingsActivity"
+			android:launchMode="singleTask"			
+            android:clearTaskOnLaunch="true"
+			android:excludeFromRecents="true"            
+            android:exported="false"
+			android:theme="@style/Black">			
+		</activity>		
+	
+    </application>
+</manifest>
