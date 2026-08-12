@@ -139,7 +139,7 @@ public class SettingsActivity extends Activity {
     private void authenticateWithKeyguard(int requestCode) {
         KeyguardManager km = (KeyguardManager) getSystemService(KEYGUARD_SERVICE);
         if (km != null && km.isKeyguardSecure()) {
-            Intent intent = km.createConfirmDeviceCredentialIntent("Authentication Required", "Confirm screen lock credential to set PIN");
+            Intent intent = km.createConfirmDeviceCredentialIntent("Authentication Required", "Confirm screen lock credentials to set PIN");
             if (intent != null) {
                 startActivityForResult(intent, requestCode);
                 return;
