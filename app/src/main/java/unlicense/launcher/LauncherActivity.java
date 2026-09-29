@@ -142,10 +142,20 @@ public class LauncherActivity extends Activity {
                 ViewGroup.LayoutParams.MATCH_PARENT,
                 ViewGroup.LayoutParams.WRAP_CONTENT));
 
+
         float density = getResources().getDisplayMetrics().density;
-        int topPadding = (int) (44 * density);
+        int safeMarginPx = (int) (44 * density);
+        int cornerRadius = 0;
+        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.S) {
+            android.view.RoundedCorner topCorner = getWindowManager().getDefaultDisplay().getRoundedCorner(android.view.RoundedCorner.POSITION_TOP_RIGHT);
+            if (topCorner != null) {
+                cornerRadius = topCorner.getRadius();
+            }
+        }
+        
+        int topPadding = Math.max(cornerRadius, safeMarginPx);
         int bottomPadding = (int) (44 * density);
-        mainContainer.setPadding((int)(12 * density), topPadding, (int)(12 * density), bottomPadding);
+        mainContainer.setPadding((int)(12 * density), topPadding, (int)(12 * density), bottomPadding);       
         
         searchEditText = new EditText(this);
         searchEditText.setHint("Search apps...");
@@ -850,13 +860,29 @@ public class LauncherActivity extends Activity {
 
     @Override
     protected void onPause() {
-        super.onPause();
-        ModeInsecure = false;
-        getWindow().addFlags(WindowManager.LayoutParams.FLAG_SECURE);        
-        if (searchEditText != null) {
-            searchEditText.setText("");
-        }
+    super.onPause();
+    ModeInsecure = false;
+    getWindow().addFlags(WindowManager.LayoutParams.FLAG_SECURE);
+
+    displayedApps.clear();
+    isPinMatchMode = false;
+    
+    if (gridView != null) {
+        gridView.setAdapter(null);
     }
+
+    if (workGridView != null) {
+        workGridView.setAdapter(null);
+        workGridView.setVisibility(View.GONE);
+    }
+
+    if (workAppsHeader != null) {
+        workAppsHeader.setVisibility(View.GONE);
+    }
+    
+    if (searchEditText != null) {
+        searchEditText.setText("");
+    } }
 
     private class AppAdapter extends BaseAdapter {
         @Override 
